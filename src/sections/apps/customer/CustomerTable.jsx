@@ -121,7 +121,7 @@ export default function CustomerTable({ data, columns, modalToggler }) {
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="center" sx={{ width: { xs: '100%', sm: 'auto' } }}>
           <Stack direction="row" spacing={2} alignItems="center">
             <Button variant="contained" startIcon={<PlusOutlined />} onClick={modalToggler}>
-              Add Customer
+              신규 등록
             </Button>
           </Stack>
         </Stack>

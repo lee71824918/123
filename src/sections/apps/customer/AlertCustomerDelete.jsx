@@ -16,7 +16,7 @@ import { openSnackbar } from 'api/snackbar';
 // assets
 import DeleteFilled from '@ant-design/icons/DeleteFilled';
 
-// ==============================|| CUSTOMER - DELETE ||============================== //
+// ==============================|| CUSTOMER - DELETE silee ||============================== //
 
 export default function AlertCustomerDelete({ id, title, open, handleClose }) {
   const deletehandler = async () => {
@@ -45,22 +45,21 @@ export default function AlertCustomerDelete({ id, title, open, handleClose }) {
       aria-labelledby="column-delete-title"
       aria-describedby="column-delete-description"
     >
-      <DialogContent sx={{ mt: 2, my: 1 }}>
+      <DialogContent sx={{ mt: 2, my: 1, width: 400 }}>
         <Stack alignItems="center" spacing={3.5}>
           <Avatar color="error" sx={{ width: 72, height: 72, fontSize: '1.75rem' }}>
             <DeleteFilled />
           </Avatar>
           <Stack spacing={2}>
             <Typography variant="h4" align="center">
-              Are you sure you want to delete?
+              삭제 하시겠습니까?
             </Typography>
             <Typography align="center">
-              By deleting
+              파일명 :
               <Typography variant="subtitle1" component="span">
                 {' '}
                 &quot;{title}&quot;{' '}
               </Typography>
-              user, all task assigned to that user will also be deleted.
             </Typography>
           </Stack>
 

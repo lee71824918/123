@@ -29,6 +29,8 @@ import Radio from '@mui/material/Radio';
 import Autocomplete from '@mui/material/Autocomplete';
 import Chip from '@mui/material/Chip';
 
+import UploadOutlined from '@ant-design/icons/UploadOutlined';
+
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 
@@ -52,6 +54,8 @@ import { getImageUrl, ImagePath } from 'utils/getImageUrl';
 import CameraOutlined from '@ant-design/icons/CameraOutlined';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import DeleteFilled from '@ant-design/icons/DeleteFilled';
+import DownloadOutlined from '@ant-design/icons/DownloadOutlined';
+import FileImageOutlined from '@ant-design/icons/FileImageOutlined';
 
 const skills = [
   'Adobe XD',
@@ -109,7 +113,7 @@ const getInitialValues = (customer) => {
     fatherName: '',
     orders: 0,
     progress: 50,
-    status: 2,
+    status: 3,
     orderStatus: '',
     contact: '',
     country: '',
@@ -128,12 +132,12 @@ const getInitialValues = (customer) => {
 };
 
 const allStatus = [
-  { value: 3, label: 'Rejected' },
-  { value: 1, label: 'Verified' },
-  { value: 2, label: 'Pending' }
+  { value: 1, label: '동물' },
+  { value: 2, label: '사람' },
+  { value: 3, label: '기타' }
 ];
 
-// ==============================|| CUSTOMER ADD / EDIT - FORM ||============================== //
+// ==============================|| CUSTOMER ADD / EDIT - FORM 신규등록 폼 silee ||============================== //
 
 export default function FormCustomerAdd({ customer, closeModal }) {
   const theme = useTheme();
@@ -157,7 +161,7 @@ export default function FormCustomerAdd({ customer, closeModal }) {
   const CustomerSchema = Yup.object().shape({
     firstName: Yup.string().max(255).required('First Name is required'),
     lastName: Yup.string().max(255).required('Last Name is required'),
-    email: Yup.string().max(255).required('Email is required').email('Must be a valid email'),
+    email: Yup.string().max(255).required('이미지 파일을 선택하세요.'),
     status: Yup.string().required('Status is required'),
     location: Yup.string().max(500),
     about: Yup.string().max(500)
@@ -230,7 +234,7 @@ export default function FormCustomerAdd({ customer, closeModal }) {
       <FormikProvider value={formik}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <DialogTitle>{customer ? 'Edit Customer' : 'New Customer'}</DialogTitle>
+            <DialogTitle>{customer ? 'Edit Customer' : '신규 등록'}</DialogTitle>
             <Divider />
             <DialogContent sx={{ p: 2.5 }}>
               <Grid container spacing={3}>
@@ -246,7 +250,9 @@ export default function FormCustomerAdd({ customer, closeModal }) {
                         cursor: 'pointer'
                       }}
                     >
-                      <Avatar alt="Avatar 1" src={avatar} sx={{ width: 72, height: 72, border: '1px dashed' }} />
+                      <Avatar sx={{ width: 72, height: 72, border: '1px dashed' }}>
+                        <FileImageOutlined style={{ fontSize: '40px' }} />
+                      </Avatar>
                       <Box
                         sx={{
                           position: 'absolute',
@@ -273,103 +279,37 @@ export default function FormCustomerAdd({ customer, closeModal }) {
                       placeholder="Outlined"
                       variant="outlined"
                       sx={{ display: 'none' }}
-                      onChange={(e) => setSelectedImage(e.target.files?.[0])}
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                          setFieldValue('email', file.name); // 선택된 파일의 이름을 'email' 필드에 설정
+                        }
+                        e.target.value = null; // 입력 필드 리셋
+                      }}
+                      inputProps={{
+                        accept: 'image/*' // 이미지 파일만 선택하도록 제한
+                      }}
                     />
                   </Stack>
                 </Grid>
                 <Grid item xs={12} md={8}>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12}>
                       <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-firstName">First Name</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-firstName"
-                          placeholder="Enter First Name"
-                          {...getFieldProps('firstName')}
-                          error={Boolean(touched.firstName && errors.firstName)}
-                          helperText={touched.firstName && errors.firstName}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-lastName">Last Name</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-lastName"
-                          placeholder="Enter Last Name"
-                          {...getFieldProps('lastName')}
-                          error={Boolean(touched.lastName && errors.lastName)}
-                          helperText={touched.lastName && errors.lastName}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={9}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-email">Email</InputLabel>
+                        <InputLabel htmlFor="customer-email">업로드 파일명</InputLabel>
                         <TextField
                           fullWidth
                           id="customer-email"
-                          placeholder="Enter Customer Email"
+                          placeholder="이미지 파일을 선택하면 파일명이 자동으로 입력됩니다."
                           {...getFieldProps('email')}
                           error={Boolean(touched.email && errors.email)}
                           helperText={touched.email && errors.email}
                         />
                       </Stack>
                     </Grid>
-                    <Grid item xs={3}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-age">Age</InputLabel>
-                        <TextField
-                          type="number"
-                          fullWidth
-                          id="customer-age"
-                          placeholder="Enter Age"
-                          {...getFieldProps('age')}
-                          error={Boolean(touched.age && errors.age)}
-                          helperText={touched.age && errors.age}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-fatherName">Father Name</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-fatherName"
-                          placeholder="Enter Father Name"
-                          {...getFieldProps('fatherName')}
-                          error={Boolean(touched.fatherName && errors.fatherName)}
-                          helperText={touched.fatherName && errors.fatherName}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-role">Customer Role</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-role"
-                          placeholder="Enter Role"
-                          {...getFieldProps('role')}
-                          error={Boolean(touched.role && errors.role)}
-                          helperText={touched.role && errors.role}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-gender">Gender</InputLabel>
-                        <RadioGroup row aria-label="payment-card" {...getFieldProps('gender')}>
-                          <FormControlLabel control={<Radio value={Gender.FEMALE} />} label={Gender.FEMALE} />
-                          <FormControlLabel control={<Radio value={Gender.MALE} />} label={Gender.MALE} />
-                        </RadioGroup>
-                      </Stack>
-                    </Grid>
                     <Grid item xs={12}>
                       <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-status">Status</InputLabel>
+                        <InputLabel htmlFor="customer-status">카테고리</InputLabel>
                         <FormControl fullWidth>
                           <Select
                             id="column-hiding"
@@ -384,9 +324,7 @@ export default function FormCustomerAdd({ customer, closeModal }) {
 
                               const selectedStatus = allStatus.filter((item) => item.value === Number(selected));
                               return (
-                                <Typography variant="subtitle2">
-                                  {selectedStatus.length > 0 ? selectedStatus[0].label : 'Pending'}
-                                </Typography>
+                                <Typography variant="subtitle2">{selectedStatus.length > 0 ? selectedStatus[0].label : '기타'}</Typography>
                               );
                             }}
                           >
@@ -404,110 +342,19 @@ export default function FormCustomerAdd({ customer, closeModal }) {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-contact">Contact</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-contact"
-                          placeholder="Enter Contact"
-                          {...getFieldProps('contact')}
-                          error={Boolean(touched.contact && errors.contact)}
-                          helperText={touched.contact && errors.contact}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-country">Country</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-country"
-                          placeholder="Enter Country"
-                          {...getFieldProps('country')}
-                          error={Boolean(touched.country && errors.country)}
-                          helperText={touched.country && errors.country}
-                        />
-                      </Stack>
-                    </Grid>
                     <Grid item xs={12}>
                       <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-location">Location</InputLabel>
-                        <TextField
-                          fullWidth
-                          id="customer-location"
-                          multiline
-                          rows={2}
-                          placeholder="Enter Location"
-                          {...getFieldProps('location')}
-                          error={Boolean(touched.location && errors.location)}
-                          helperText={touched.location && errors.location}
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-about">About Customer</InputLabel>
+                        <InputLabel htmlFor="customer-about">이미지 설명</InputLabel>
                         <TextField
                           fullWidth
                           id="customer-about"
                           multiline
                           rows={2}
-                          placeholder="Enter Customer Information"
+                          placeholder="이미지 설명을 입력하세요."
                           {...getFieldProps('about')}
                           error={Boolean(touched.about && errors.about)}
                           helperText={touched.about && errors.about}
                         />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Stack spacing={1}>
-                        <InputLabel htmlFor="customer-skills">Skills</InputLabel>
-                        <Autocomplete
-                          multiple
-                          fullWidth
-                          id="customer-skills"
-                          options={skills}
-                          {...getFieldProps('skills')}
-                          getOptionLabel={(label) => label}
-                          onChange={(event, newValue) => {
-                            setFieldValue('skills', newValue);
-                          }}
-                          renderInput={(params) => <TextField {...params} name="skill" placeholder="Add Skills" />}
-                          renderTags={(value, getTagProps) =>
-                            value.map((option, index) => (
-                              <Chip
-                                {...getTagProps({ index })}
-                                variant="combined"
-                                key={index}
-                                label={option}
-                                deleteIcon={<CloseOutlined style={{ fontSize: '0.75rem' }} />}
-                                sx={{ color: 'text.primary' }}
-                              />
-                            ))
-                          }
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
-                        <Stack spacing={0.5}>
-                          <Typography variant="subtitle1">Make Contact Info Public</Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Means that anyone viewing your profile will be able to see your contacts details
-                          </Typography>
-                        </Stack>
-                        <FormControlLabel control={<Switch defaultChecked sx={{ mt: 0 }} />} label="" labelPlacement="start" />
-                      </Stack>
-                      <Divider sx={{ my: 2 }} />
-                      <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
-                        <Stack spacing={0.5}>
-                          <Typography variant="subtitle1">Available to hire</Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Toggling this will let your teammates know that you are available for acquiring new projects
-                          </Typography>
-                        </Stack>
-                        <FormControlLabel control={<Switch sx={{ mt: 0 }} />} label="" labelPlacement="start" />
                       </Stack>
                     </Grid>
                   </Grid>
