@@ -80,14 +80,14 @@ export default function AuthWrapper({ children }) {
               <AuthCard>{children}</AuthCard>
               {!isLoggedIn && (
                 <Box sx={{ maxWidth: { xs: 400, lg: 475 }, margin: { xs: 2.5, md: 3 }, '& > *': { flexGrow: 1, flexBasis: '50%' } }}>
-                  <Grid item xs={12}>
+                  {/*<Grid item xs={12}>
                     <Divider sx={{ mb: 3 }}>
                       <Typography variant="caption"> Check other login views </Typography>
                     </Divider>
                   </Grid>
                   <Grid item xs={12}>
                     <LoginProvider currentLoginWith={authParam} />
-                  </Grid>
+                  </Grid>*/}
                 </Box>
               )}
             </Grid>

@@ -32,12 +32,14 @@ import { fetcher } from 'utils/axios';
 import EyeOutlined from '@ant-design/icons/EyeOutlined';
 import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
 
+import SHA256 from 'crypto-js/sha256';
+
 // ============================|| JWT - LOGIN ||============================ //
 
 export default function AuthLogin({ isDemo = false }) {
   const [checked, setChecked] = React.useState(false);
 
-  const { login } = useAuth();
+  //const { login } = useAuth();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -55,12 +57,14 @@ export default function AuthLogin({ isDemo = false }) {
     <>
       <Formik
         initialValues={{
-          email: 'info@codedthemes.com',
-          password: '123456',
+          email: 'test',
+          password: 'test', //sylee
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+          email: Yup.string() /*.email('Must be a valid email')*/
+            .max(255)
+            .required('Email is required'),
           password: Yup.string()
             .required('Password is required')
             .test('no-leading-trailing-whitespace', 'Password cannot start or end with spaces', (value) => value === value.trim())
@@ -69,7 +73,13 @@ export default function AuthLogin({ isDemo = false }) {
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
             const trimmedEmail = values.email.trim();
-            await login(trimmedEmail, values.password);
+
+            // 비밀번호를 sha-256으로 해싱
+            const hashedPassword = values.password;
+            //const hashedPassword = SHA256(values.password).toString();
+            //console.log(hashedPassword);
+
+            await login(trimmedEmail, hashedPassword);
             setStatus({ success: true });
             setSubmitting(false);
             preload('api/menu/dashboard', fetcher); // load menu on login success
@@ -86,7 +96,7 @@ export default function AuthLogin({ isDemo = false }) {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                  <InputLabel htmlFor="email-login">ID</InputLabel>
                   <OutlinedInput
                     id="email-login"
                     type="email"
@@ -141,7 +151,7 @@ export default function AuthLogin({ isDemo = false }) {
               </Grid>
               <Grid item xs={12} sx={{ mt: -1 }}>
                 <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
-                  <FormControlLabel
+                  {/*<FormControlLabel
                     control={
                       <Checkbox
                         checked={checked}
@@ -160,7 +170,7 @@ export default function AuthLogin({ isDemo = false }) {
                     color="text.primary"
                   >
                     Forgot Password?
-                  </Link>
+                  </Link>*/}
                 </Stack>
               </Grid>
               {errors.submit && (

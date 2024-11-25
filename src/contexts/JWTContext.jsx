@@ -93,6 +93,34 @@ export const JWTProvider = ({ children }) => {
     });
   };
 
+  /*// 로그인 API 호출 (fetch 사용)
+  const login = async (email, password) => {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: email,
+        password: password
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+    // 서버 응답 처리
+    const user = await response.json();
+
+    dispatch({
+      type: LOGIN,
+      payload: {
+        isLoggedIn: true,
+        user
+      }
+    });
+  };*/
+
   const register = async (email, password, firstName, lastName) => {
     // todo: this flow need to be recode as it not verified
     const id = chance.bb_pin();
