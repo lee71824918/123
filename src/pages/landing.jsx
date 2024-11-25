@@ -136,7 +136,8 @@ export default function Landing() {
       >
         <CardMedia
           component="img"
-          image={getImageUrl(`bg-mockup-${presetColor}.webp`, ImagePath.LANDING)}
+          // image={getImageUrl(`bg-mockup-${presetColor}.webp`, ImagePath.LANDING)}
+          image={getImageUrl(`bg-mockup-theme1.webp`, ImagePath.LANDING)}
           sx={{
             position: 'absolute',
             width: { md: '58%', lg: '50%', xl: '45%' },
