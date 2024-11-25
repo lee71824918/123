@@ -18,7 +18,7 @@ const invoiceItem = { id: 'invoice1', title: 'Invoice', type: 'item', url: '/das
 
 const loadingMenu = {
   id: 'group-dashboard-loading',
-  title: <FormattedMessage id="dashboard111" />,
+  title: <FormattedMessage id="dashboard" />,
   type: 'group',
   icon: icons.loading,
   children: [

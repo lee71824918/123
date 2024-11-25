@@ -20,6 +20,8 @@ const WidgetData = Loadable(lazy(() => import('pages/widget/data')));
 const WidgetChart = Loadable(lazy(() => import('pages/widget/chart')));
 
 // render - applications
+const MenuOne = Loadable(lazy(() => import('pages/apps/menu-one'))); //silee
+const MenuTwo = Loadable(lazy(() => import('pages/apps/menu-two'))); //silee
 const AppChat = Loadable(lazy(() => import('pages/apps/chat')));
 const AppCalendar = Loadable(lazy(() => import('pages/apps/calendar')));
 
@@ -167,6 +169,14 @@ const MainRoutes = {
         {
           path: 'apps',
           children: [
+            {
+              path: 'menu-one',
+              element: <MenuOne />
+            },
+            {
+              path: 'menu-two',
+              element: <MenuTwo />
+            },
             {
               path: 'chat',
               element: <AppChat />

@@ -62,7 +62,8 @@ export default function DashboardLayout() {
           >
             {pathname !== '/apps/profiles/account/my-account' && <Breadcrumbs />}
             <Outlet />
-            <Footer />
+            {/*푸터 삭제 silee*/}
+            {/*<Footer />*/}
           </Container>
         </Box>
         <AddCustomer />

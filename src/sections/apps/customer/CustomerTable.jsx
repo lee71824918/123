@@ -33,14 +33,7 @@ import { rankItem } from '@tanstack/match-sorter-utils';
 import ScrollX from 'components/ScrollX';
 import MainCard from 'components/MainCard';
 
-import {
-  CSVExport,
-  DebouncedInput,
-  HeaderSort,
-  RowSelection,
-  SelectColumnSorting,
-  TablePagination
-} from 'components/third-party/react-table';
+import { DebouncedInput, HeaderSort, RowSelection, TablePagination } from 'components/third-party/react-table';
 
 import ExpandingUserDetail from 'sections/apps/customer/ExpandingUserDetail';
 
@@ -87,7 +80,7 @@ export default function CustomerTable({ data, columns, modalToggler }) {
       rowSelection,
       globalFilter
     },
-    enableRowSelection: true,
+    enableRowSelection: false,
     onSortingChange: setSorting,
     onRowSelectionChange: setRowSelection,
     onGlobalFilterChange: setGlobalFilter,
@@ -123,39 +116,13 @@ export default function CustomerTable({ data, columns, modalToggler }) {
         justifyContent="space-between"
         sx={{ padding: 2, ...(downSM && { '& .MuiOutlinedInput-root, & .MuiFormControl-root': { width: '100%' } }) }}
       >
-        <DebouncedInput
-          value={globalFilter ?? ''}
-          onFilterChange={(value) => setGlobalFilter(String(value))}
-          placeholder={`Search ${data.length} records...`}
-        />
+        <DebouncedInput value={globalFilter ?? ''} onFilterChange={(value) => setGlobalFilter(String(value))} placeholder={`파일명 검색`} />
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="center" sx={{ width: { xs: '100%', sm: 'auto' } }}>
-          <Select
-            value={statusFilter}
-            onChange={(event) => setStatusFilter(Number(event.target.value))}
-            displayEmpty
-            inputProps={{ 'aria-label': 'Status Filter' }}
-          >
-            <MenuItem value={0}>All Status</MenuItem>
-            <MenuItem value={1}>Verified</MenuItem>
-            <MenuItem value={2}>Pending</MenuItem>
-            <MenuItem value={3}>Rejected</MenuItem>
-          </Select>
-          <SelectColumnSorting {...{ getState: table.getState, getAllColumns: table.getAllColumns, setSorting }} />
           <Stack direction="row" spacing={2} alignItems="center">
             <Button variant="contained" startIcon={<PlusOutlined />} onClick={modalToggler}>
               Add Customer
             </Button>
-            <CSVExport
-              {...{
-                data:
-                  table.getSelectedRowModel().flatRows.map((row) => row.original).length === 0
-                    ? data
-                    : table.getSelectedRowModel().flatRows.map((row) => row.original),
-                headers,
-                filename: 'customer-list.csv'
-              }}
-            />
           </Stack>
         </Stack>
       </Stack>

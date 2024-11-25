@@ -14,33 +14,13 @@ import IncomeAreaChart from './IncomeAreaChart';
 // ==============================|| DEFAULT - UNIQUE VISITOR ||============================== //
 
 export default function UniqueVisitorCard() {
-  const [view, setView] = useState('monthly'); // 'monthly' or 'weekly'
+  const [view, setView] = useState('weekly'); // 'monthly' or 'weekly'
 
   return (
     <>
       <Grid container alignItems="center" justifyContent="space-between">
         <Grid item>
-          <Typography variant="h5">Unique Visitor</Typography>
-        </Grid>
-        <Grid item>
-          <Stack direction="row" alignItems="center" spacing={0}>
-            <Button
-              size="small"
-              onClick={() => setView('monthly')}
-              color={view === 'monthly' ? 'primary' : 'secondary'}
-              variant={view === 'monthly' ? 'outlined' : 'text'}
-            >
-              Month
-            </Button>
-            <Button
-              size="small"
-              onClick={() => setView('weekly')}
-              color={view === 'weekly' ? 'primary' : 'secondary'}
-              variant={view === 'weekly' ? 'outlined' : 'text'}
-            >
-              Week
-            </Button>
-          </Stack>
+          <Typography variant="h5">최근 일주일 등록/삭제 건수</Typography>
         </Grid>
       </Grid>
       <MainCard content={false} sx={{ mt: 1.5 }}>

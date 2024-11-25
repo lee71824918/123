@@ -47,10 +47,19 @@ const applications = {
       id: 'chat',
       title: <FormattedMessage id="대시보드" />,
       type: 'item',
-      url: '/apps/chat',
+      url: '/apps/menu-one',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     },
+    {
+      id: 'kanban',
+      title: <FormattedMessage id="이미지 파일 관리" />,
+      type: 'item',
+      icon: FileTextOutlined,
+      link: '/apps/menu-two',
+      url: '/apps/menu-two',
+      breadcrumbs: false
+    }
     // {
     //   id: 'calendar',
     //   title: <FormattedMessage id="calendar" />,
@@ -67,15 +76,6 @@ const applications = {
     //     }
     //   ]
     // },
-    {
-      id: 'kanban',
-      title: <FormattedMessage id="이미지 파일 관리" />,
-      type: 'item',
-      icon: FileTextOutlined,
-      link: '/apps/kanban/:tab',
-      url: '/apps/kanban/board',
-      breadcrumbs: false
-    }
     // {
     //   id: 'customer',
     //   title: <FormattedMessage id="customer" />,

@@ -62,7 +62,7 @@ export default function KanbanPage() {
 
   return (
     <>
-      <Breadcrumbs custom heading={breadcrumbHeading} links={breadcrumbLinks} />
+      {/*<Breadcrumbs custom heading={breadcrumbHeading} links={breadcrumbLinks} />*/}
       <Box sx={{ display: 'flex' }}>
         <Grid container spacing={1}>
           <Grid item xs={12}>

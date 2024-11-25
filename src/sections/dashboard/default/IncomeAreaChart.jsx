@@ -11,13 +11,9 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { ThemeMode } from 'config';
 
 // Sample data
-const monthlyLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const weeklyLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-const monthlyData1 = [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35];
+// const weeklyLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const weeklyLabels = ['11/19', '11/20', '11/21', '11/22', '11/23', '11/24', '오늘'];
 const weeklyData1 = [31, 40, 28, 51, 42, 109, 100];
-
-const monthlyData2 = [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41];
 const weeklyData2 = [11, 32, 45, 32, 34, 52, 41];
 
 function Legend({ items, onToggle }) {
@@ -68,9 +64,9 @@ export default function IncomeAreaChart({ view }) {
     Sessions: true
   });
 
-  const labels = view === 'monthly' ? monthlyLabels : weeklyLabels;
-  const data1 = view === 'monthly' ? monthlyData1 : weeklyData1;
-  const data2 = view === 'monthly' ? monthlyData2 : weeklyData2;
+  const labels = weeklyLabels;
+  const data1 = weeklyData1;
+  const data2 = weeklyData2;
 
   const line = theme.palette.divider;
 
@@ -81,7 +77,7 @@ export default function IncomeAreaChart({ view }) {
   const visibleSeries = [
     {
       data: data1,
-      label: 'Page views',
+      label: '등록', //silee
       showMark: false,
       area: true,
       id: 'Germany',
@@ -90,7 +86,7 @@ export default function IncomeAreaChart({ view }) {
     },
     {
       data: data2,
-      label: 'Sessions',
+      label: '삭제', //silee
       showMark: false,
       area: true,
       id: 'UK',
