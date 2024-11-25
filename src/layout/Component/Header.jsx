@@ -50,34 +50,34 @@ export default function Header() {
               sx={{ mt: 0.5, ml: 1, fontSize: '0.725rem', height: 20, '& .MuiChip-label': { px: 0.5 } }}
             />
           </Stack>
-          <Stack
-            direction="row"
-            sx={{ '& .header-link': { px: 1, '&:hover': { color: 'primary.main' } }, display: { xs: 'none', md: 'block' } }}
-            spacing={2}
-          >
-            <Link className="header-link" color="white" component={RouterLink} to="/login" target="_blank" underline="none">
-              Dashboard
-            </Link>
-            <Link className="header-link" color="primary" component={RouterLink} to="/components-overview/buttons" underline="none">
-              Components
-            </Link>
-            <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">
-              Documentation
-            </Link>
-            <Box sx={{ display: 'inline-block' }}>
-              <AnimateButton>
-                <Button
-                  component={Link}
-                  href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                  disableElevation
-                  color="primary"
-                  variant="contained"
-                >
-                  Purchase Now
-                </Button>
-              </AnimateButton>
-            </Box>
-          </Stack>
+          {/*<Stack*/}
+          {/*  direction="row"*/}
+          {/*  sx={{ '& .header-link': { px: 1, '&:hover': { color: 'primary.main' } }, display: { xs: 'none', md: 'block' } }}*/}
+          {/*  spacing={2}*/}
+          {/*>*/}
+          {/*  <Link className="header-link" color="white" component={RouterLink} to="/login" target="_blank" underline="none">*/}
+          {/*    Dashboard*/}
+          {/*  </Link>*/}
+          {/*  <Link className="header-link" color="primary" component={RouterLink} to="/components-overview/buttons" underline="none">*/}
+          {/*    Components*/}
+          {/*  </Link>*/}
+          {/*  <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">*/}
+          {/*    Documentation*/}
+          {/*  </Link>*/}
+          {/*  <Box sx={{ display: 'inline-block' }}>*/}
+          {/*    <AnimateButton>*/}
+          {/*      <Button*/}
+          {/*        component={Link}*/}
+          {/*        href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"*/}
+          {/*        disableElevation*/}
+          {/*        color="primary"*/}
+          {/*        variant="contained"*/}
+          {/*      >*/}
+          {/*        Purchase Now*/}
+          {/*      </Button>*/}
+          {/*    </AnimateButton>*/}
+          {/*  </Box>*/}
+          {/*</Stack>*/}
           <Box sx={{ width: '100%', alignItems: 'center', justifyContent: 'space-between', display: { xs: 'flex', md: 'none' } }}>
             <Typography sx={{ textAlign: 'left', display: 'inline-block' }}>
               <Logo reverse to="/" />

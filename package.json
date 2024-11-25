@@ -1,6 +1,6 @@
 {
   "name": "mantis-material-react",
-  "version": "3.3.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@ant-design/colors": "^7.1.0",

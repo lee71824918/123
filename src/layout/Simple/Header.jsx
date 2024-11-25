@@ -88,65 +88,65 @@ export default function Header() {
                 sx={{ mt: 0.5, ml: 1, fontSize: '0.725rem', height: 20, '& .MuiChip-label': { px: 0.5 } }}
               />
             </Stack>
-            <Stack
-              direction="row"
-              sx={{ '& .header-link': { px: 1, '&:hover': { color: 'primary.main' } }, display: { xs: 'none', md: 'block' } }}
-              spacing={2}
-            >
-              <Link
-                className="header-link"
-                color="white"
-                component={RouterLink}
-                to={isLoggedIn ? APP_DEFAULT_PATH : '/login'}
-                target="_blank"
-                underline="none"
-              >
-                {isLoggedIn ? 'Dashboard' : 'Login'}
-              </Link>
-              <Link className="header-link" color="white" component={RouterLink} to="/components-overview/buttons" underline="none">
-                Components
-              </Link>
-              <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">
-                Documentation
-              </Link>
-              <Box sx={{ display: 'inline-block' }}>
-                <AnimateButton>
-                  <Button
-                    component={Link}
-                    href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                    disableElevation
-                    color="primary"
-                    variant="contained"
-                  >
-                    Purchase Now
-                  </Button>
-                </AnimateButton>
-              </Box>
-            </Stack>
+            {/*<Stack*/}
+            {/*  direction="row"*/}
+            {/*  sx={{ '& .header-link': { px: 1, '&:hover': { color: 'primary.main' } }, display: { xs: 'none', md: 'block' } }}*/}
+            {/*  spacing={2}*/}
+            {/*>*/}
+            {/*  <Link*/}
+            {/*    className="header-link"*/}
+            {/*    color="white"*/}
+            {/*    component={RouterLink}*/}
+            {/*    to={isLoggedIn ? APP_DEFAULT_PATH : '/login'}*/}
+            {/*    target="_blank"*/}
+            {/*    underline="none"*/}
+            {/*  >*/}
+            {/*    {isLoggedIn ? 'Dashboard' : 'Login'}*/}
+            {/*  </Link>*/}
+            {/*  <Link className="header-link" color="white" component={RouterLink} to="/components-overview/buttons" underline="none">*/}
+            {/*    Components*/}
+            {/*  </Link>*/}
+            {/*  <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">*/}
+            {/*    Documentation*/}
+            {/*  </Link>*/}
+            {/*  <Box sx={{ display: 'inline-block' }}>*/}
+            {/*    <AnimateButton>*/}
+            {/*      <Button*/}
+            {/*        component={Link}*/}
+            {/*        href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"*/}
+            {/*        disableElevation*/}
+            {/*        color="primary"*/}
+            {/*        variant="contained"*/}
+            {/*      >*/}
+            {/*        Purchase Now*/}
+            {/*      </Button>*/}
+            {/*    </AnimateButton>*/}
+            {/*  </Box>*/}
+            {/*</Stack>*/}
             <Box sx={{ width: '100%', alignItems: 'center', justifyContent: 'space-between', display: { xs: 'flex', md: 'none' } }}>
               <Typography sx={{ textAlign: 'left', display: 'inline-block' }}>
                 <Logo reverse to="/" />
               </Typography>
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Button
-                  variant="outlined"
-                  size="small"
-                  color="warning"
-                  component={RouterLink}
-                  to="/components-overview/buttons"
-                  sx={{ mt: 0.5, height: 28 }}
-                >
-                  All Components
-                </Button>
+              {/*<Stack direction="row" spacing={2} alignItems="center">*/}
+              {/*  <Button*/}
+              {/*    variant="outlined"*/}
+              {/*    size="small"*/}
+              {/*    color="warning"*/}
+              {/*    component={RouterLink}*/}
+              {/*    to="/components-overview/buttons"*/}
+              {/*    sx={{ mt: 0.5, height: 28 }}*/}
+              {/*  >*/}
+              {/*    All Components*/}
+              {/*  </Button>*/}
 
-                <IconButton
-                  color="secondary"
-                  onClick={drawerToggler(true)}
-                  sx={{ '&:hover': { bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.lighter' : 'secondary.dark' } }}
-                >
-                  <MenuOutlined style={{ color: theme.palette.mode === ThemeMode.DARK ? 'inherit' : theme.palette.grey[100] }} />
-                </IconButton>
-              </Stack>
+              {/*  <IconButton*/}
+              {/*    color="secondary"*/}
+              {/*    onClick={drawerToggler(true)}*/}
+              {/*    sx={{ '&:hover': { bgcolor: theme.palette.mode === ThemeMode.DARK ? 'secondary.lighter' : 'secondary.dark' } }}*/}
+              {/*  >*/}
+              {/*    <MenuOutlined style={{ color: theme.palette.mode === ThemeMode.DARK ? 'inherit' : theme.palette.grey[100] }} />*/}
+              {/*  </IconButton>*/}
+              {/*</Stack>*/}
               <Drawer
                 anchor="top"
                 open={drawerToggle}

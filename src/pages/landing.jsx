@@ -136,26 +136,26 @@ export default function Landing() {
       >
         <CardMedia
           component="img"
-          image={getImageUrl(`bg-mockup-${presetColor}.png`, ImagePath.LANDING)}
+          image={getImageUrl(`bg-mockup-${presetColor}.webp`, ImagePath.LANDING)}
           sx={{
             position: 'absolute',
-            width: { md: '78%', lg: '70%', xl: '65%' },
-            right: { md: '-14%', lg: '-4%', xl: '-2%' },
-            top: { md: '16%', lg: '12%', xl: '8%' },
+            width: { md: '58%', lg: '50%', xl: '45%' },
+            right: { md: '34%', lg: '14%', xl: '12%' },
+            top: { md: '36%', lg: '32%', xl: '28%' },
             zIndex: 1,
             display: { xs: 'none', md: 'block' }
           }}
         />
         <Hero />
       </Box>
-      <FeatureBlock />
-      <DemoBlock />
-      <CallToAction />
-      <NumberBlock />
-      <BrowserBlock />
-      <ElementBlock />
-      <PartnerBlock />
-      <TestimonialBlock />
+      {/*<FeatureBlock />*/}
+      {/*<DemoBlock />*/}
+      {/*<CallToAction />*/}
+      {/*<NumberBlock />*/}
+      {/*<BrowserBlock />*/}
+      {/*<ElementBlock />*/}
+      {/*<PartnerBlock />*/}
+      {/*<TestimonialBlock />*/}
       <Slide direction={theme.direction === ThemeDirection.RTL ? 'right' : 'left'} in={visible} mountOnEnter unmountOnExit>
         <MainCard
           sx={{
