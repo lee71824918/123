@@ -10,7 +10,8 @@ import pages from './pages';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-  items: [widget, applications, formsTables, chartsMap, samplePage, pages, other]
+  // items: [widget, applications, formsTables, chartsMap, samplePage, pages, other]  //메뉴 조정 silee
+  items: [applications]
 };
 
 export default menuItems;

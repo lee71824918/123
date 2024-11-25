@@ -40,15 +40,18 @@ export default function Navigation() {
       return false;
     });
 
-    if (menuLoading) {
-      menuItem.items.splice(0, 0, dashboardMenu);
-      setMenuItems({ items: [...menuItem.items] });
-    } else if (!menuLoading && dashboardMenu?.id !== undefined && !isFound) {
-      menuItem.items.splice(0, 1, dashboardMenu);
-      setMenuItems({ items: [...menuItem.items] });
-    } else {
-      setMenuItems({ items: [...menuItem.items] });
-    }
+    // silee 기존 대시보드 메뉴 삭제
+    // if (menuLoading) {
+    //   menuItem.items.splice(0, 0, dashboardMenu);
+    //   setMenuItems({ items: [...menuItem.items] });
+    // } else if (!menuLoading && dashboardMenu?.id !== undefined && !isFound) {
+    //   menuItem.items.splice(0, 1, dashboardMenu);
+    //   setMenuItems({ items: [...menuItem.items] });
+    // } else {
+    //   setMenuItems({ items: [...menuItem.items] });
+    // }
+    setMenuItems({ items: [...menuItem.items] });
+
     // eslint-disable-next-line
   }, [menuLoading]);
 

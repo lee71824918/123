@@ -94,49 +94,50 @@ export default function Localization() {
                       primary={
                         <Grid container>
                           <Typography color="text.primary">English</Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>
-                            (UK)
-                          </Typography>
+                          {/*<Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>*/}
+                          {/*  (UK)*/}
+                          {/*</Typography>*/}
                         </Grid>
                       }
                     />
                   </ListItemButton>
-                  <ListItemButton selected={i18n === 'fr'} onClick={() => handleListItemClick('fr')}>
+                  <ListItemButton selected={i18n === 'ko'} onClick={() => handleListItemClick('fr')}>
                     <ListItemText
                       primary={
                         <Grid container>
-                          <Typography color="text.primary">français</Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>
-                            (French)
-                          </Typography>
+                          <Typography color="text.primary">Korean</Typography>
+                          {/*<Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>*/}
+                          {/*  (French)*/}
+                          {/*</Typography>*/}
                         </Grid>
                       }
                     />
                   </ListItemButton>
-                  <ListItemButton selected={i18n === 'ro'} onClick={() => handleListItemClick('ro')}>
-                    <ListItemText
-                      primary={
-                        <Grid container>
-                          <Typography color="text.primary">Română</Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>
-                            (Romanian)
-                          </Typography>
-                        </Grid>
-                      }
-                    />
-                  </ListItemButton>
-                  <ListItemButton selected={i18n === 'zh'} onClick={() => handleListItemClick('zh')}>
-                    <ListItemText
-                      primary={
-                        <Grid container>
-                          <Typography color="text.primary">中国人</Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>
-                            (Chinese)
-                          </Typography>
-                        </Grid>
-                      }
-                    />
-                  </ListItemButton>
+                  {/* 다국어 고르기 삭제 silee*/}
+                  {/*<ListItemButton selected={i18n === 'ro'} onClick={() => handleListItemClick('ro')}>*/}
+                  {/*  <ListItemText*/}
+                  {/*    primary={*/}
+                  {/*      <Grid container>*/}
+                  {/*        <Typography color="text.primary">Română</Typography>*/}
+                  {/*        <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>*/}
+                  {/*          (Romanian)*/}
+                  {/*        </Typography>*/}
+                  {/*      </Grid>*/}
+                  {/*    }*/}
+                  {/*  />*/}
+                  {/*</ListItemButton>*/}
+                  {/*<ListItemButton selected={i18n === 'zh'} onClick={() => handleListItemClick('zh')}>*/}
+                  {/*  <ListItemText*/}
+                  {/*    primary={*/}
+                  {/*      <Grid container>*/}
+                  {/*        <Typography color="text.primary">中国人</Typography>*/}
+                  {/*        <Typography variant="caption" color="text.secondary" sx={{ ml: '8px' }}>*/}
+                  {/*          (Chinese)*/}
+                  {/*        </Typography>*/}
+                  {/*      </Grid>*/}
+                  {/*    }*/}
+                  {/*  />*/}
+                  {/*</ListItemButton>*/}
                 </List>
               </ClickAwayListener>
             </Paper>

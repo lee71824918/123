@@ -18,9 +18,11 @@ export default function DrawerContent() {
     <>
       <SimpleBar sx={{ '& .simplebar-content': { display: 'flex', flexDirection: 'column' } }}>
         <Navigation />
+        {/*{drawerOpen && !downLG && <NavCard />}*/}
         {drawerOpen && !downLG && <NavCard />}
       </SimpleBar>
-      <NavUser />
+      {/*silee 왼쪽 메뉴 하단 유저 정보 표시 삭제*/}
+      {/*<NavUser />*/}
     </>
   );
 }
