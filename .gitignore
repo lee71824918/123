@@ -137,7 +137,6 @@ logs
 **/*.back.*
 
 .idea
-.yarn
 .old
 dist
 build
